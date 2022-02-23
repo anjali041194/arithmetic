@@ -1,4 +1,4 @@
-package com.bezkoder.spring.jdbc.postgresql.repository;
+package com.anjalitiwari.arithmetic.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bezkoder.spring.jdbc.postgresql.model.Tutorial;
+import com.anjalitiwari.arithmetic.model.Tutorial;
 
 @Repository
 public class JdbcTutorialRepository implements TutorialRepository {

@@ -1,12 +1,12 @@
-package com.bezkoder.spring.jdbc.postgresql;
+package com.anjalitiwari.arithmetic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootJdbctemplatePostgresqlApplication {
+public class CalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootJdbctemplatePostgresqlApplication.class, args);
+		SpringApplication.run(CalculatorApplication.class, args);
 	}
 }

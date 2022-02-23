@@ -1,10 +1,10 @@
-package com.bezkoder.spring.jdbc.postgresql;
+package com.anjalitiwari.arithmetic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootJdbctemplatePostgresqlApplicationTests {
+class CalculatorApplicationTests {
 
 	@Test
 	void contextLoads() {

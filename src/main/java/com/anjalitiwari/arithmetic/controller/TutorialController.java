@@ -1,8 +1,9 @@
-package com.bezkoder.spring.jdbc.postgresql.controller;
+package com.anjalitiwari.arithmetic.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.anjalitiwari.arithmetic.repository.TutorialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bezkoder.spring.jdbc.postgresql.model.Tutorial;
-import com.bezkoder.spring.jdbc.postgresql.repository.TutorialRepository;
+import com.anjalitiwari.arithmetic.model.Tutorial;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController

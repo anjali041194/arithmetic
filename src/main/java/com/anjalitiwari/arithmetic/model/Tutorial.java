@@ -1,4 +1,4 @@
-package com.bezkoder.spring.jdbc.postgresql.model;
+package com.anjalitiwari.arithmetic.model;
 
 public class Tutorial {
 
