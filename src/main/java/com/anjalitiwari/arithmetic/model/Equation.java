@@ -11,7 +11,7 @@ public class Equation {
 
     public enum Sign {PLUS, MINUS, MULTIPLICATION, DIVISION}
 
-    final public static HashMap<Sign, String> SignSymbols = new HashMap() {{
+    final public static HashMap<Sign, String> SignSymbols = new HashMap<>() {{
         put(Sign.PLUS, "+");
         put(Sign.MINUS, "-");
         put(Sign.MULTIPLICATION, "x");
