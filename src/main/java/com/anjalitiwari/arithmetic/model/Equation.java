@@ -5,16 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.HashMap;
-import java.util.Map;
-import javax.persistence.Column;
-import org.springframework.util.StringUtils;
 
 @Entity
 public class Equation {
 
-    public enum Sign {PLUS, MINUS, MULTIPLICATION, DIVISION};
-
-    // map for casting between char symbol representation and enum value
+    public enum Sign {PLUS, MINUS, MULTIPLICATION, DIVISION}
 
     final public static HashMap<Sign, String> SignSymbols = new HashMap() {{
         put(Sign.PLUS, "+");
@@ -33,59 +28,28 @@ public class Equation {
                 .getKey();
     }
 
-    // attributes
-
     @Id
     @GeneratedValue
     private long id;
-    private int number1;
-    private int number2;
-    private Sign sign = null;
-    private String signSymbol = null;
+    private String expression;
     private double result;
-    @Column(name = "clientToken")
-    private String clientToken;
 
-    // constructors
-
-    public Equation() {
-    }
-
-    public Equation ( long id, int number1, int number2, Sign sign, double result, String clientToken ) {
+    public Equation ( long id, int number1, int number2, Sign sign, double result) {
         this.id = id;
-        this.number1 = number1;
-        this.number2 = number2;
-        this.sign = sign;
-        this.signSymbol = this.SignSymbols.get(sign);
+        this.expression = Integer.toString(number1) + this.SignSymbols.get(sign) + Integer.toString(number2);
         this.result = result;
-        this.clientToken = clientToken;
     }
 
-    public Equation ( long id, int number1, int number2, Sign sign, double result ) {
+    public Equation ( int number1, int number2, Sign sign, double result) {
         this.id = id;
-        this.number1 = number1;
-        this.number2 = number2;
-        this.sign = sign;
-        this.signSymbol = this.SignSymbols.get(sign);
+        this.expression = Integer.toString(number1) + this.SignSymbols.get(sign) + Integer.toString(number2);
         this.result = result;
     }
 
-    public Equation ( int number1, int number2, Sign sign, double result ) {
-        this.number1 = number1;
-        this.number2 = number2;
-        this.sign = sign;
-        this.signSymbol = this.SignSymbols.get(sign);
+    public Equation ( String expression, double result) {
+        this.expression = expression;
         this.result = result;
     }
-
-    public Equation ( int number1, int number2, Sign sign ) {
-        this.number1 = number1;
-        this.number2 = number2;
-        this.sign = sign;
-        this.signSymbol = this.SignSymbols.get(sign);
-    }
-
-    // getters and setters
 
     public long getId() {
         return id;
@@ -95,29 +59,12 @@ public class Equation {
         this.id = id;
     }
 
-    public int getNumber1() {
-        return number1;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
-    public void setNumber1(int number1) {
-        this.number1 = number1;
-    }
-
-    public int getNumber2() {
-        return number2;
-    }
-
-    public void setNumber2(int number2) {
-        this.number2 = number2;
-    }
-
-    public Sign getSign() {
-        return sign;
-    }
-
-    public void setSign(Sign sign) {
-        this.sign = sign;
-        this.signSymbol = this.SignSymbols.get(sign);
+    public String getExpression() {
+        return expression;
     }
 
     public double getResult() {
@@ -128,21 +75,8 @@ public class Equation {
         this.result = result;
     }
 
-    public String getSignSymbol() {
-        return signSymbol;
+    @Override
+    public String toString() {
+        return "Expression [ " + expression + " ] = " + " Result: " + Double.toString(result);
     }
-
-    public void setSignSymbol(String signSymbol) {
-        this.signSymbol = signSymbol;
-        this.sign = getSignBySymbol(signSymbol);
-    }
-
-    public String getClientToken() {
-        return clientToken;
-    }
-
-    public void setClientToken(String clientToken) {
-        this.clientToken = clientToken;
-    }
-
 }
