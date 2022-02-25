@@ -1,5 +1,6 @@
 package com.anjalitiwari.arithmetic.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class JdbcCalculatorRepository implements CalculatorRepository {
 
   @Override
   public Integer save(Equation equation) {
-    return jdbcTemplate.update("INSERT INTO equation (expression, result) VALUES(?,?)",
-        new Object[] { equation.getExpression(), equation.getResult() });
+    return jdbcTemplate.update("INSERT INTO equation (id, expression, result, date_created, date_updated) VALUES(?, ?,?, ?, ?)",
+        new Object[] { equation.getId(), equation.getExpression(), equation.getResult(), new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis())});
   }
 
   @Override

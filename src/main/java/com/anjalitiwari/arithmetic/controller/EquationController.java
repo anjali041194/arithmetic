@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/api")
 public class EquationController {
 
   @Autowired
@@ -60,7 +59,7 @@ public class EquationController {
   @PostMapping("/equations")
   public ResponseEntity<String> createEquation(@RequestBody Equation equation) {
     try {
-      calculatorRepository.save(new Equation(equation.getExpression(), equation.getResult()));
+      calculatorRepository.save(new Equation(equation.getId(), equation.getExpression(), equation.getResult()));
       return new ResponseEntity<>("Equation was created successfully.", HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

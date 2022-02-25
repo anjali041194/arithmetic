@@ -1,5 +1,7 @@
 package com.anjalitiwari.arithmetic.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.AbstractMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,32 +32,41 @@ public class Equation {
 
     @Id
     @GeneratedValue
-    private long id;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("expression")
     private String expression;
-    private double result;
+    @JsonProperty("result")
+    private Integer result;
 
-    public Equation ( long id, int number1, int number2, Sign sign, double result) {
+    public Equation () {
+        id = 1;
+        expression = "dummy";
+        result = 0;
+    }
+
+    public Equation ( Integer id, int number1, int number2, Sign sign, Integer result) {
         this.id = id;
         this.expression = Integer.toString(number1) + this.SignSymbols.get(sign) + Integer.toString(number2);
         this.result = result;
     }
 
-    public Equation ( int number1, int number2, Sign sign, double result) {
-        this.id = id;
+    public Equation ( int number1, int number2, Sign sign, Integer result) {
         this.expression = Integer.toString(number1) + this.SignSymbols.get(sign) + Integer.toString(number2);
         this.result = result;
     }
 
-    public Equation ( String expression, double result) {
+    public Equation ( Integer id, String expression, Integer result) {
+        this.id = id;
         this.expression = expression;
         this.result = result;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,16 +78,16 @@ public class Equation {
         return expression;
     }
 
-    public double getResult() {
+    public Integer getResult() {
         return result;
     }
 
-    public void setResult(double result) {
+    public void setResult(Integer result) {
         this.result = result;
     }
 
     @Override
     public String toString() {
-        return "Expression [ " + expression + " ] = " + " Result: " + Double.toString(result);
+        return "Expression [ " + expression + " ] = " + " Result: " + result;
     }
 }
